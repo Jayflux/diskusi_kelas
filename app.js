@@ -16,10 +16,15 @@ app.use('/api/discussions', discussionRoutes);
 app.use('/api/comments', commentRoutes);
 
 app.get('/', (req, res) => {
-  res.send('API Diskusi Kelas berjalan dengan baik di port 3000!');
+  res.send('API Diskusi Kelas berjalan dengan baik!');
+});
+
+// Handler 404
+app.use((req, res) => {
+  res.status(404).json({ message: 'Endpoint tidak ditemukan' });
 });
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server berjalan di port ${PORT}`);
+  console.log(`Server berjalan di port ${PORT}`);
 });
